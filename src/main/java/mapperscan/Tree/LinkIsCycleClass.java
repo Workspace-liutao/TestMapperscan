@@ -5,13 +5,33 @@ public class LinkIsCycleClass {
         Node p1 = root;
         Node p2 = root;
         while (p2 != null && p2.getNext() != null) {
-           p1 = p1.getNext();
-           p2= p2.getNext().getNext();
+            p1 = p1.getNext();
+            p2 = p2.getNext().getNext();
             if (p1 == p2) {
                 return true;
             }
         }
         return false;
+    }
+
+    public static boolean isCycle2(Node root) {
+        Node p1 = root;
+        Node p2 = root;
+        while (p2 != null && p2.getNext() != null) {
+            p1 = p1.getNext();
+            p2 = p2.getNext().getNext();
+            if (p1 == p2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void linkPrint(Node node) {
+        if (node.getNext() != null) {
+            linkPrint(node.getNext());
+        }
+        System.out.println(node.getData());
     }
 
     public static void main(String[] args) {
@@ -26,7 +46,8 @@ public class LinkIsCycleClass {
         node3.setNext(node4);
         node4.setNext(node5);
         node5.setNext(node6);
-        node6.setNext(node3);
-        System.out.println(LinkIsCycleClass.isCycle(node1));
+//        node6.setNext(node3);
+//        System.out.println(LinkIsCycleClass.isCycle(node1));
+        LinkIsCycleClass.linkPrint(node1);
     }
 }

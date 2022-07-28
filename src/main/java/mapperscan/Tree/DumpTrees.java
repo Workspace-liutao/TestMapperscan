@@ -44,7 +44,7 @@ public class DumpTrees {
         for (int i = (arr.length - 2) / 2; i >= 0; i--) {
             dumpTrees.downJustDump(arr, i, arr.length);
         }
-        System.out.println("堆下称后");
+        System.out.println("堆下沉后");
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }

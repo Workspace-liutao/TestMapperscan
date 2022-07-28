@@ -1,8 +1,8 @@
 package mapperscan.Tree;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import org.springframework.util.StringUtils;
+
+import java.util.*;
 
 public class SortNumberClass {
     public void maoPaoSort(int[] arr) {
@@ -94,7 +94,6 @@ public class SortNumberClass {
                 temp = arr[i];
                 arr[i] = arr[mark];
                 arr[mark] = temp;
-
             }
         }
         temp = arr[left];
@@ -130,9 +129,34 @@ public class SortNumberClass {
         }
     }
 
+    public boolean isValid(String s) {
+        if (s == null || s.length() < 2) {
+            return false;
+        }
+        Map<Character, Character> maps = new HashMap();
+        maps.put(')', '(');
+        maps.put(']', '[');
+        maps.put('}', '{');
+        Stack<Character> stack = new Stack();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (maps.containsKey(ch)) {
+                if (stack.isEmpty() || stack.peek() != maps.get(ch)) {
+                    return false;
+                }
+                stack.pop();
+            } else {
+                stack.push(ch);
+            }
+
+        }
+        return stack.isEmpty();
+    }
+
 
     public static void main(String[] args) {
         SortNumberClass sortNumberClass = new SortNumberClass();
+        String  str2="上海和行卡|哈好的";
         int[] arr = new int[]{2, 3, 5, 1, 7, 6};
 //        sortNumberClass.maoPaoChangeSort(arr);
 //        sortNumberClass.quicklySort(arr, 0, arr.length - 1);
@@ -140,6 +164,44 @@ public class SortNumberClass {
         sortNumberClass.quickSortByStack(arr, 0, arr.length - 1);
         for (int i : arr) {
             System.out.println(i);
+        }
+        String str = "){";
+        sortNumberClass.isValid(str);
+        int[] nums = new int[]{0, 0, 0, 1000000000, 1000000000, 1000000000, 1000000000};
+        int target = 1000000000;
+        sortNumberClass.fourSum(nums,target);
+
+    }
+
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList();
+        dfs(nums, target, 0, result, new ArrayList());
+        return result;
+    }
+
+    public void dfs(int[] nums, int target, int index, List<List<Integer>> result, List<Integer> list) {
+        if (list.size() > 4) {
+            return;
+        }
+        if (target == 0 && list.size() == 4) {
+            result.add(new ArrayList(list));
+            return;
+        }
+        for (int i = index; i < nums.length; i++) {
+            if (i > index && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            if (i < nums.length - 1 && nums[i] + (3 - list.size()) * nums[i + 1] > target) {
+                continue;
+            }
+            int temp =nums[i] + (3 - list.size()) * nums[nums.length - 1];
+            if (i < nums.length - 1 && temp< target) {
+                continue;
+            }
+            list.add(nums[i]);
+            dfs(nums, target - nums[i], i + 1, result, list);
+            list.remove(list.size() - 1);
         }
     }
 
