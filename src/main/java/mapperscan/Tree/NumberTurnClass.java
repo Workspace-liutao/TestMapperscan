@@ -1,13 +1,64 @@
 package mapperscan.Tree;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Stack;
 
 public class NumberTurnClass {
     public static void main(String[] args) {
-        int i = -123;
-        System.out.println(NumberTurnClass.trunNumber(i, i));
-        int [] arr = new int[]{1,8,6,2,5,4,8,3,7};
-        System.out.println(NumberTurnClass.getMax(arr));
+//        int i = -123;
+//        System.out.println(NumberTurnClass.trunNumber(i, i));
+//        int [] arr = new int[]{1,8,6,2,5,4,8,3,7};
+//        System.out.println(NumberTurnClass.getMax(arr));
+        NumberTurnClass numberTurnClass = new NumberTurnClass();
+        int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7};
+        numberTurnClass.rotate(nums, 3);
+      int i=  Integer.bitCount(5);
+      String  str=  Integer.toBinaryString(5);
+        Integer.highestOneBit(5);
+
+       long longtimestamp = LocalDateTime.now().toInstant(ZoneOffset.ofHours(8)).toEpochMilli();
+       long longTime2mouthLater=LocalDateTime.now().plusMonths(2).toInstant(ZoneOffset.ofHours(8)).toEpochMilli();
+        System.out.println(longtimestamp);
+      System.out.println(longTime2mouthLater);
+    }
+
+    public int reverseBits(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        String str = String.valueOf(n);
+        char[] ch = str.toCharArray();
+        int len = ch.length;
+        int temp = 0;
+        for (int i = 0; i < len; i++) {
+            int j = i;
+            if (ch[j] == 1) {
+                int temp1 = 1;
+                while (j >= 1) {
+                    temp1 = 2 * temp1;
+                    j--;
+                }
+                temp = temp + temp1;
+            }
+        }
+        return temp;
+    }
+
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        if (k % n == 0) {
+            return;
+        }
+        k = k % n;
+        int[] temps = new int[n];
+        for (int i = 0; i < n; i++) {
+            int j = (k + i) % n;
+            temps[j] = nums[i];
+        }
+        System.arraycopy(temps, 0, nums, 0, n - 1);
+        nums = temps;
     }
 
     public static boolean trunNumber(int num, int num1) {
@@ -28,21 +79,19 @@ public class NumberTurnClass {
         }
     }
 
-    public static  int getMax(int[] arr) {
+    public static int getMax(int[] arr) {
         int maxLen = 0;
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
-                int tmp=(j - i) * Math.min(arr[i], arr[j]);
+                int tmp = (j - i) * Math.min(arr[i], arr[j]);
                 maxLen = Math.max(maxLen, tmp);
-                if(tmp==56){
-                    System.out.println(i+""+j);
+                if (tmp == 56) {
+                    System.out.println(i + "" + j);
                 }
             }
         }
         return maxLen;
     }
-
-
 
 
     class Solution {
@@ -68,4 +117,6 @@ public class NumberTurnClass {
             return x == revertedNumber || x == revertedNumber / 10;
         }
     }
+
+
 }

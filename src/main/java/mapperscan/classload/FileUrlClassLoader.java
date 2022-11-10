@@ -24,6 +24,7 @@ public class FileUrlClassLoader extends URLClassLoader {
         URL[] urls = {uri.toURL()};
         FileUrlClassLoader loader = new FileUrlClassLoader(urls);
         Class classs = loader.loadClass("com.baomw.dao.IndexDao");
+        classs.newInstance();
 
     }
 
