@@ -66,5 +66,4 @@ public class ProxyCreationClass implements InvocationHandler {
         });
         return (WatchProductImpl) enhancer.create();
     }
-
 }

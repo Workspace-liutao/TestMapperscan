@@ -14,7 +14,4 @@ public class ProxyFactoryClass {
         Product2Service proxy = (Product2Service) proxyFactory.getProxy();
         proxy.downProduct();
     }
-
-
-
 }

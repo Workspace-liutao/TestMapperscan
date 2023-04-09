@@ -1,5 +1,6 @@
 package mapperscan.Tree;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class JiShuSortClass {
@@ -13,6 +14,13 @@ public class JiShuSortClass {
         int j=str.charAt(3)-'0';
 //        String.format();
         System.out.println(str);
+        LocalDateTime   start =LocalDateTime.now().minusDays(1L);
+        LocalDateTime   end =LocalDateTime.now().minusHours(4L);
+        LocalDateTime  nextDate=LocalDateTime.now().minusMinutes(10L);
+        if(nextDate.compareTo(LocalDateTime.now())<=0){
+            System.out.println("");
+        }
+
     }
 
     public int maximumGap(int[] nums) {
