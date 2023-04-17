@@ -38,7 +38,7 @@ public class MapperscanMain {
         proxyCreationClass.createProxy().createProduct();
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext();
 
-       ServerSocket serverSocket = new ServerSocket();
+        ServerSocket serverSocket = new ServerSocket();
         ServerSocketChannel.open();
         synchronized (MapperscanMain.class){
 

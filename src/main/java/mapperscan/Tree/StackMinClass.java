@@ -40,5 +40,18 @@ public class StackMinClass {
         stackMinClass.pop();
         stackMinClass.pop();
         stackMinClass.getMin();
+//        int i=1;
+//        while(i<10){
+//            int j=0;
+//            while(j<5){
+//                if(j==3){
+//                    System.out.println("j="+j+"跳出内层循环");
+//                    break;
+//                }
+//                j++;
+//            }
+//            System.out.println("i="+i);
+//            i++;
+//        }
     }
 }

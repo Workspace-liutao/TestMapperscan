@@ -6,6 +6,7 @@ import java.util.List;
 public class CallBackClass {
     public static void main(String[] args) {
         CallBackClass callBackClass = new CallBackClass();
+        double  i=Math.ceil(11/3);
         int[] nums = new int[]{1, 2, 3};
         List<List<Integer>> list = callBackClass.subsets(nums);
         System.out.println(list.toString());

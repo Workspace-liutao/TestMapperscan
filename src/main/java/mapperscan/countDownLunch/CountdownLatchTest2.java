@@ -17,7 +17,7 @@ public class CountdownLatchTest2 {
                         System.out.println("选手" + Thread.currentThread().getName() + "正在等待裁判发布口令");
                         cdOrder.await();
                         System.out.println("选手" + Thread.currentThread().getName() + "已接受裁判口令");
-                        Thread.sleep((long) (Math.random() * 10000));
+                        Thread.sleep((long) (Math.random() * 100));
                         System.out.println("选手" + Thread.currentThread().getName() + "到达终点");
                         cdAnswer.countDown();
                     } catch (InterruptedException e) {

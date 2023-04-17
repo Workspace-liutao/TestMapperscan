@@ -13,7 +13,7 @@ public class DumpTrees {
             lastIndex = parentIndex;
             parentIndex = (lastIndex - 1) / 2;
         }
-        arr[parentIndex] = temp;
+        arr[lastIndex] = temp;
     }
 
     public void downJustDump(int[] arr, int parent, int length) {

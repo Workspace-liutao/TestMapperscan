@@ -1,10 +1,18 @@
 package mapperscan.Tree;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class StringClass {
     public static void main(String[] args) {
         String str1 = "aabaaabaaac";
         String str2 = "aabaaac";
         System.out.println(returnResult(str1, str2));
+        StringClass stringClass  = new StringClass();
+        String  temp1="anagram";
+        String  temp2="nagaram";
+       boolean  falg= stringClass.isAnagram(temp1,temp2);
     }
 
     public static int returnResult(String str1, String str2) {
@@ -38,5 +46,18 @@ public class StringClass {
 
         }
         return next;
+    }
+
+
+    public boolean isAnagram(String s, String t) {
+        Map<Character,Integer> maps = new HashMap<>();
+        char[]  chs=s.toCharArray();
+        char[]  cht=t.toCharArray();
+        Arrays.sort(chs);
+        Arrays.sort(cht);
+        String temp1=String.valueOf(chs);
+        String temp2=String.valueOf(cht);
+        return temp1.equals(temp2);
+
     }
 }
